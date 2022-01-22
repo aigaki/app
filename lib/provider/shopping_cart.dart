@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:ss_mann/model/shopping_cart_item.dart';
 
 class ShoppingCart with ChangeNotifier {
-  List<ShoppingCartItem> _items = [];
+  final List<ShoppingCartItem> _items = [];
 
   List<ShoppingCartItem> get items {
     return [..._items];
@@ -27,7 +27,4 @@ class ShoppingCart with ChangeNotifier {
 
 // TODO
   void decrementItemQuantity(int id) {}
-  // void addItem(int id) {
-  //   return [..._items, id];
-  // }
 }

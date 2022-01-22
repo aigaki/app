@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ss_mann/dummy_data/dummy_products.dart';
 import 'package:ss_mann/provider/product_catalog.dart';
 import 'package:ss_mann/widgets/app_drawer.dart';
 import 'package:ss_mann/widgets/product_grid.dart';
@@ -28,7 +27,7 @@ class ProductsScreen extends StatelessWidget {
       floatingActionButton: Stack(
         children: [
           FloatingActionButton(
-            child: Icon(Icons.ac_unit_rounded),
+            child: const Icon(Icons.ac_unit_rounded),
             onPressed: resetProducts,
           ),
         ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/model/product.dart';
-import 'package:ss_mann/provider/product_catalog.dart';
 import 'package:ss_mann/provider/shopping_cart.dart';
 
 class ProductPane extends StatelessWidget {
@@ -12,15 +11,12 @@ class ProductPane extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final removeProductById =
-        Provider.of<ProductCatalog>(context, listen: false).removeProductById;
     final isItemInCart =
         Provider.of<ShoppingCart>(context).isItemInCart(product.id);
     final additemToCart =
         Provider.of<ShoppingCart>(context, listen: false).addItemToCart;
     final removeItemFromCart =
         Provider.of<ShoppingCart>(context, listen: false).removeItemFromCart;
-    final cartItems = Provider.of<ShoppingCart>(context).items;
 
     return GestureDetector(
       // onTap: () => removeProductById(product.id),
