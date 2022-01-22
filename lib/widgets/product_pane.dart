@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/model/product.dart';
 import 'package:ss_mann/provider/product_catalog.dart';
+import 'package:ss_mann/provider/shopping_cart.dart';
 
 class ProductPane extends StatelessWidget {
   final Product product;
@@ -13,8 +14,16 @@ class ProductPane extends StatelessWidget {
   Widget build(BuildContext context) {
     final removeProductById =
         Provider.of<ProductCatalog>(context, listen: false).removeProductById;
+    final isItemInCart =
+        Provider.of<ShoppingCart>(context).isItemInCart(product.id);
+    final additemToCart =
+        Provider.of<ShoppingCart>(context, listen: false).addItemToCart;
+    final removeItemFromCart =
+        Provider.of<ShoppingCart>(context, listen: false).removeItemFromCart;
+    final cartItems = Provider.of<ShoppingCart>(context).items;
+
     return GestureDetector(
-      onTap: () => removeProductById(product.id),
+      // onTap: () => removeProductById(product.id),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Container(
@@ -24,10 +33,10 @@ class ProductPane extends StatelessWidget {
             children: [
               Image.network(
                 product.imgUrl,
-                height: 70,
+                height: 50,
               ),
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -37,7 +46,14 @@ class ProductPane extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
+              IconButton(
+                  onPressed: isItemInCart
+                      ? () => removeItemFromCart(product.id)
+                      : () => additemToCart(product.id),
+                  icon: Icon(isItemInCart
+                      ? Icons.add_shopping_cart
+                      : Icons.remove_shopping_cart))
             ],
           ),
           decoration: BoxDecoration(
