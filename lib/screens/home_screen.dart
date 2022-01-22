@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ss_mann/widgets/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
+  static String routeName = '/';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override

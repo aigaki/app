@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (_) => const HomeScreen(),
+        HomeScreen.routeName: (_) => const HomeScreen(),
         ProductsScreen.routeName: (_) => const ProductsScreen(),
         CartScreen.routeName: (_) => const CartScreen(),
         InspirationsScreen.routeName: (_) => const InspirationsScreen(),
