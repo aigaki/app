@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:ss_mann/dummy_data/dummy_products.dart';
 import 'package:ss_mann/model/product.dart';
 
-class ProductProvider with ChangeNotifier {
+class ProductCatalog with ChangeNotifier {
   List<Product> _productList = [...dummyProducts];
 
   List<Product> get productList => [..._productList];

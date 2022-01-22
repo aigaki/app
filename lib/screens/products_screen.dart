@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/dummy_data/dummy_products.dart';
-import 'package:ss_mann/provider/product_provider.dart';
+import 'package:ss_mann/provider/product_catalog.dart';
 import 'package:ss_mann/widgets/product_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -10,9 +10,9 @@ class ProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<ProductProvider>(context).productList;
+    final products = Provider.of<ProductCatalog>(context).productList;
     final resetProducts =
-        Provider.of<ProductProvider>(context, listen: false).resetProduct;
+        Provider.of<ProductCatalog>(context, listen: false).resetProduct;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),

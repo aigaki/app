@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/model/product.dart';
-import 'package:ss_mann/provider/product_provider.dart';
+import 'package:ss_mann/provider/product_catalog.dart';
 
 class ProductPane extends StatelessWidget {
   final Product product;
@@ -12,7 +12,7 @@ class ProductPane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final removeProductById =
-        Provider.of<ProductProvider>(context, listen: false).removeProductById;
+        Provider.of<ProductCatalog>(context, listen: false).removeProductById;
     return GestureDetector(
       onTap: () => removeProductById(product.id),
       child: ClipRRect(

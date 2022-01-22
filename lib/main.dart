@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ss_mann/provider/product_provider.dart';
+import 'package:ss_mann/provider/product_catalog.dart';
 import 'package:ss_mann/screens/home_screen.dart';
 import 'package:ss_mann/screens/inspirations_screen.dart';
 import 'package:ss_mann/screens/products_screen.dart';
@@ -10,7 +10,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ProductProvider(),
+          create: (_) => ProductCatalog(),
         ),
       ],
       child: const MyApp(),
