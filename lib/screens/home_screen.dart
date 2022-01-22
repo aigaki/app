@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ss_mann/widgets/screens_navigation.dart';
+import 'package:ss_mann/widgets/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -8,9 +8,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('buy stuff from us plz'),
+        title: const Text('ssMann'),
       ),
-      body: ScreenNavigation(),
+      body: const Text('Todo'),
+      drawer: const AppDrawer(),
     );
   }
 }

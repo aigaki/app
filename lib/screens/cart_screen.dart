@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ss_mann/widgets/app_drawer.dart';
 
 class CartScreen extends StatelessWidget {
   static String routeName = '/cart';
@@ -11,6 +12,7 @@ class CartScreen extends StatelessWidget {
         title: Text('Cart Screen'),
       ),
       body: Text('todo'),
+      drawer: const AppDrawer(),
     );
   }
 }

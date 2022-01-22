@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/dummy_data/dummy_products.dart';
 import 'package:ss_mann/provider/product_catalog.dart';
+import 'package:ss_mann/widgets/app_drawer.dart';
 import 'package:ss_mann/widgets/product_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -23,6 +24,7 @@ class ProductsScreen extends StatelessWidget {
           products: products,
         ),
       ),
+      drawer: const AppDrawer(),
       floatingActionButton: Stack(
         children: [
           FloatingActionButton(

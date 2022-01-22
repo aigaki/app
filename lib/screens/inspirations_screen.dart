@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ss_mann/widgets/screens_navigation.dart';
+import 'package:ss_mann/widgets/app_drawer.dart';
 
 class InspirationsScreen extends StatelessWidget {
   static String routeName = '/inspirations';
@@ -9,9 +9,10 @@ class InspirationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Inspirations'),
+        title: const Text('Inspirations'),
       ),
-      body: Container(child: ScreenNavigation()),
+      body: const Text('todo'),
+      drawer: const AppDrawer(),
     );
   }
 }
