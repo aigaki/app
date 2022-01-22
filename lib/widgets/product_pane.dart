@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/model/product.dart';
 import 'package:ss_mann/provider/shopping_cart.dart';
+import 'package:ss_mann/screens/product_screen.dart';
 
 class ProductPane extends StatelessWidget {
   final Product product;
   final Function(int)? onClick;
   const ProductPane({Key? key, required this.product, this.onClick})
       : super(key: key);
+
+  void goToProductPage(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(ProductScreen.routeName, arguments: product.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +49,24 @@ class ProductPane extends StatelessWidget {
                   ),
                 ),
               ),
-              IconButton(
-                  onPressed: isItemInCart
-                      ? () => removeItemFromCart(product.id)
-                      : () => additemToCart(product.id),
-                  icon: Icon(isItemInCart
-                      ? Icons.add_shopping_cart
-                      : Icons.remove_shopping_cart))
+              Flex(
+                direction: Axis.horizontal,
+                children: [
+                  IconButton(
+                    onPressed: isItemInCart
+                        ? () => removeItemFromCart(product.id)
+                        : () => additemToCart(product.id),
+                    icon: Icon(isItemInCart
+                        ? Icons.add_shopping_cart
+                        : Icons.remove_shopping_cart),
+                  ),
+                  IconButton(
+                    color: Colors.red,
+                    onPressed: () => goToProductPage(context),
+                    icon: const Icon(Icons.arrow_forward),
+                  ),
+                ],
+              )
             ],
           ),
           decoration: BoxDecoration(

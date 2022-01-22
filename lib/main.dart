@@ -5,6 +5,7 @@ import 'package:ss_mann/provider/shopping_cart.dart';
 import 'package:ss_mann/screens/cart_screen.dart';
 import 'package:ss_mann/screens/home_screen.dart';
 import 'package:ss_mann/screens/inspirations_screen.dart';
+import 'package:ss_mann/screens/product_screen.dart';
 import 'package:ss_mann/screens/products_screen.dart';
 
 void main() {
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         ProductsScreen.routeName: (_) => const ProductsScreen(),
         CartScreen.routeName: (_) => const CartScreen(),
         InspirationsScreen.routeName: (_) => const InspirationsScreen(),
+        ProductScreen.routeName: (_) => const ProductScreen(),
       },
     );
   }

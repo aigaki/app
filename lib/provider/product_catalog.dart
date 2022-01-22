@@ -8,6 +8,10 @@ class ProductCatalog with ChangeNotifier {
 
   List<Product> get productList => [..._productList];
 
+  Product? getProductById(int id) {
+    return _productList.firstWhere((element) => element.id == id);
+  }
+
 // TODO remove later, it's here just for testing
   void removeProductById(int id) {
     _productList.removeWhere((element) => element.id == id);
