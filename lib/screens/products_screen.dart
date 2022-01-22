@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ss_mann/dummy_data/dummy_products.dart';
-import 'package:ss_mann/widgets/product_pane.dart';
-import 'package:ss_mann/widgets/screens_navigation.dart';
+import 'package:ss_mann/widgets/product_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
   static String routeName = '/products';
@@ -11,11 +10,12 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Products'),
+        title: const Text('Products'),
       ),
       body: Container(
-        child: ListView(
-          children: dummyProducts.map((p) => ProductPane(product: p)).toList(),
+        padding: const EdgeInsets.all(16),
+        child: ProductGrid(
+          products: dummyProducts,
         ),
       ),
     );
