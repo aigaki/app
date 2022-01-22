@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ss_mann/model/product.dart';
 import 'package:ss_mann/provider/shopping_cart.dart';
+import 'package:ss_mann/screens/cart_screen.dart';
 import 'package:ss_mann/screens/product_screen.dart';
 
 class ProductPane extends StatelessWidget {
@@ -15,12 +16,27 @@ class ProductPane extends StatelessWidget {
         .pushNamed(ProductScreen.routeName, arguments: product.id);
   }
 
+  void goToCartScreen(BuildContext context) {
+    Navigator.of(context).pushNamed(CartScreen.routeName);
+  }
+
+  void addToCartAndShowSnackBar(BuildContext context) {
+    Provider.of<ShoppingCart>(context, listen: false).addItemToCart(product.id);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Added to cart'),
+        action: SnackBarAction(
+          label: 'Go to cart',
+          onPressed: () => goToCartScreen(context),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final isItemInCart =
         Provider.of<ShoppingCart>(context).isItemInCart(product.id);
-    final additemToCart =
-        Provider.of<ShoppingCart>(context, listen: false).addItemToCart;
     final removeItemFromCart =
         Provider.of<ShoppingCart>(context, listen: false).removeItemFromCart;
 
@@ -55,7 +71,7 @@ class ProductPane extends StatelessWidget {
                   IconButton(
                     onPressed: isItemInCart
                         ? () => removeItemFromCart(product.id)
-                        : () => additemToCart(product.id),
+                        : () => addToCartAndShowSnackBar(context),
                     icon: Icon(isItemInCart
                         ? Icons.add_shopping_cart
                         : Icons.remove_shopping_cart),
