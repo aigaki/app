@@ -10,4 +10,12 @@ class Product {
     required this.id,
     required this.imgUrl,
   });
+
+  factory Product.fromJson(dynamic json) {
+    return Product(
+        name: json['name'],
+        price: json['price'],
+        id: json['id'],
+        imgUrl: json['imgUrl']);
+  }
 }
