@@ -14,7 +14,7 @@ final List<Product> dummyProducts = [
       imgUrl:
           'https://ros.net.pl/GalleryImages/product_photos/360_350/34791_45248_360_350_100793.png'),
   Product(
-      name: 'żel przed wypryskom',
+      name: 'lubrykant',
       price: 9.79,
       id: 167244,
       imgUrl:

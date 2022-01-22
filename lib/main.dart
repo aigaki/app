@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ss_mann/provider/product_provider.dart';
 import 'package:ss_mann/screens/home_screen.dart';
 import 'package:ss_mann/screens/inspirations_screen.dart';
 import 'package:ss_mann/screens/products_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProductProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
