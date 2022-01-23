@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ss_mann/model/product.dart';
-import 'package:ss_mann/model/shopping_cart_item.dart';
-import 'package:ss_mann/provider/product_catalog.dart';
-import 'package:ss_mann/provider/shopping_cart.dart';
-import 'package:ss_mann/widgets/app_drawer.dart';
-import 'package:ss_mann/widgets/product_cart_info.dart';
+import 'package:aigaki_app/model/product.dart';
+import 'package:aigaki_app/model/shopping_cart_item.dart';
+import 'package:aigaki_app/provider/product_catalog.dart';
+import 'package:aigaki_app/provider/shopping_cart.dart';
+import 'package:aigaki_app/widgets/app_drawer.dart';
+import 'package:aigaki_app/widgets/product_cart_info.dart';
 
 class ProductCartItemArgs {
   String name;

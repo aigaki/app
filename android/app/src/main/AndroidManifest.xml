@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ss_mann">
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="com.example.aigaki_app">
    <application
-        android:label="ss_mann"
+        android:label="aigaki_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

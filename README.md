@@ -1,4 +1,4 @@
-# ss_mann
+# Aigaki App
 
 ## How to run
 

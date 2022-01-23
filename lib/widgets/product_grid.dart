@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ss_mann/model/product.dart';
-import 'package:ss_mann/widgets/product_pane.dart';
+import 'package:aigaki_app/model/product.dart';
+import 'package:aigaki_app/widgets/product_pane.dart';
 
 class ProductGrid extends StatelessWidget {
   final List<Product> products;

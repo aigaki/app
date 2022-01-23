@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:ss_mann/dummy_data/dummy_products.dart';
-import 'package:ss_mann/model/product.dart';
+import 'package:aigaki_app/dummy_data/dummy_products.dart';
+import 'package:aigaki_app/model/product.dart';
 
 class ProductCatalog with ChangeNotifier {
   List<Product> _productList = [...dummyProducts];

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:ss_mann/model/shopping_cart_item.dart';
+import 'package:aigaki_app/model/shopping_cart_item.dart';
 
 class ShoppingCart with ChangeNotifier {
   final List<ShoppingCartItem> _items = [];

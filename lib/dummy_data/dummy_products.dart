@@ -1,4 +1,4 @@
-import 'package:ss_mann/model/product.dart';
+import 'package:aigaki_app/model/product.dart';
 
 final List<Product> dummyProducts = [
   Product(

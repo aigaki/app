@@ -1,4 +1,4 @@
-package com.example.ss_mann
+package com.example.aigaki_app
 
 import io.flutter.embedding.android.FlutterActivity
 

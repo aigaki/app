@@ -1,6 +1,6 @@
 {
-    "name": "ss_mann",
-    "short_name": "ss_mann",
+    "name": "aigaki_app",
+    "short_name": "aigaki_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

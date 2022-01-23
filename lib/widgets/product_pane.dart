@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ss_mann/model/product.dart';
-import 'package:ss_mann/provider/shopping_cart.dart';
-import 'package:ss_mann/screens/cart_screen.dart';
-import 'package:ss_mann/screens/product_screen.dart';
+import 'package:aigaki_app/model/product.dart';
+import 'package:aigaki_app/provider/shopping_cart.dart';
+import 'package:aigaki_app/screens/cart_screen.dart';
+import 'package:aigaki_app/screens/product_screen.dart';
 
 class ProductPane extends StatelessWidget {
   final Product product;

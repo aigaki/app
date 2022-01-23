@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ss_mann/provider/product_catalog.dart';
-import 'package:ss_mann/widgets/app_drawer.dart';
-import 'package:ss_mann/widgets/product_grid.dart';
+import 'package:aigaki_app/provider/product_catalog.dart';
+import 'package:aigaki_app/widgets/app_drawer.dart';
+import 'package:aigaki_app/widgets/product_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
   static String routeName = '/products';

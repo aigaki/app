@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ss_mann/fetch/fetch_products.dart';
-import 'package:ss_mann/widgets/app_drawer.dart';
+import 'package:aigaki_app/fetch/fetch_products.dart';
+import 'package:aigaki_app/widgets/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routeName = '/';
@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
     getProducts();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ssMann'),
+        title: const Text('Aigaki'),
       ),
       body: const Text('Todo'),
       drawer: const AppDrawer(),

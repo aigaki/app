@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ss_mann/screens/cart_screen.dart';
-import 'package:ss_mann/screens/home_screen.dart';
-import 'package:ss_mann/screens/inspirations_screen.dart';
-import 'package:ss_mann/screens/products_screen.dart';
+import 'package:aigaki_app/screens/cart_screen.dart';
+import 'package:aigaki_app/screens/home_screen.dart';
+import 'package:aigaki_app/screens/inspirations_screen.dart';
+import 'package:aigaki_app/screens/products_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   static String bgImgUrl =
@@ -22,7 +22,7 @@ class AppDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             child: const Text(
-              'ssMann',
+              'Aigaki',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,

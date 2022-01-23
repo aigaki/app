@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ss_mann/widgets/app_drawer.dart';
+import 'package:aigaki_app/widgets/app_drawer.dart';
 
 class InspirationsScreen extends StatelessWidget {
   static String routeName = '/inspirations';

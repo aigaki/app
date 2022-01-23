@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ss_mann/provider/product_catalog.dart';
-import 'package:ss_mann/provider/shopping_cart.dart';
-import 'package:ss_mann/screens/cart_screen.dart';
-import 'package:ss_mann/screens/home_screen.dart';
-import 'package:ss_mann/screens/inspirations_screen.dart';
-import 'package:ss_mann/screens/product_screen.dart';
-import 'package:ss_mann/screens/products_screen.dart';
+import 'package:aigaki_app/provider/product_catalog.dart';
+import 'package:aigaki_app/provider/shopping_cart.dart';
+import 'package:aigaki_app/screens/cart_screen.dart';
+import 'package:aigaki_app/screens/home_screen.dart';
+import 'package:aigaki_app/screens/inspirations_screen.dart';
+import 'package:aigaki_app/screens/product_screen.dart';
+import 'package:aigaki_app/screens/products_screen.dart';
 
 void main() {
   runApp(
