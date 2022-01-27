@@ -6,16 +6,16 @@ class HomeScreen extends StatelessWidget {
   static String routeName = '/';
   const HomeScreen({Key? key}) : super(key: key);
 
-  Future<void> getProducts() async {
-    final products = await fetchProducts();
-    products.forEach((element) {
-      print(element.imgUrl);
-    });
-  }
+  // Future<void> getProducts() async {
+  //   final products = await fetchProducts();
+  //   products.forEach((element) {
+  //     print(element.imgUrl);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    getProducts();
+    // getProducts();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Aigaki'),
