@@ -7,15 +7,6 @@ import 'package:aigaki_app/provider/shopping_cart.dart';
 import 'package:aigaki_app/widgets/app_drawer.dart';
 import 'package:aigaki_app/widgets/product_cart_info.dart';
 
-class ProductCartItemArgs {
-  String name;
-  double price;
-  int quantity;
-
-  ProductCartItemArgs(
-      {required this.name, required this.price, required this.quantity});
-}
-
 class CartScreen extends StatelessWidget {
   static String routeName = '/cart';
   const CartScreen({Key? key}) : super(key: key);
@@ -35,16 +26,13 @@ class CartScreen extends StatelessWidget {
       final p = getProductById(context)(item.productId);
       if (p == null) {
         return ProductCartItemArgs(
-          name: 'undefined',
-          price: 69,
-          quantity: 420,
-        );
+            name: 'undefined', price: 69, quantity: 420, imgUrl: "lol");
       }
       return ProductCartItemArgs(
-        name: p.name,
-        price: p.price,
-        quantity: item.quantity,
-      );
+          name: p.name,
+          price: p.price,
+          quantity: item.quantity,
+          imgUrl: p.imgUrl);
     });
   }
 
@@ -54,10 +42,28 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Cart Screen'),
       ),
-      body: ListView(children: [
-        ...getRelevantCartProductInfo(context).map((e) =>
-            ProductCartInfo(name: e.name, price: e.price, quantity: e.quantity))
-      ]),
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: Stack(
+          children: [
+            ListView(
+              shrinkWrap: true,
+              children: [
+                ...getRelevantCartProductInfo(context).map(
+                  (product) => ProductCartInfo(product: product),
+                )
+              ],
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text('Checkout'),
+              ),
+            )
+          ],
+        ),
+      ),
       drawer: const AppDrawer(),
     );
   }

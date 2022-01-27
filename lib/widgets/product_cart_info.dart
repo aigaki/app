@@ -1,30 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:aigaki_app/model/product.dart';
-import 'package:aigaki_app/model/shopping_cart_item.dart';
-import 'package:aigaki_app/provider/product_catalog.dart';
-import 'package:aigaki_app/provider/shopping_cart.dart';
+
+class ProductCartItemArgs {
+  String name;
+  String imgUrl;
+  double price;
+  int quantity;
+
+  ProductCartItemArgs(
+      {required this.name,
+      required this.price,
+      required this.quantity,
+      required this.imgUrl});
+}
 
 class ProductCartInfo extends StatelessWidget {
-  final String name;
-  final double price;
-  final int quantity;
+  final ProductCartItemArgs product;
   const ProductCartInfo({
     Key? key,
-    required this.name,
-    required this.price,
-    required this.quantity,
+    required this.product,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Flex(
-      direction: Axis.horizontal,
-      children: [
-        Text(name),
-        Text('{$price}'),
-        Text('{$quantity}'),
-      ],
+    return ListTile(
+      leading: Image.network(
+        product.imgUrl,
+        width: 30,
+      ),
+      title: Row(
+        children: [
+          Text(
+            product.name,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+          Text('${product.price}'),
+        ],
+      ),
     );
   }
 }
