@@ -5,11 +5,15 @@ import 'package:aigaki_app/provider/shopping_cart.dart';
 import 'package:aigaki_app/screens/cart_screen.dart';
 import 'package:aigaki_app/screens/product_screen.dart';
 
+Icon getCartIcon(bool isInCart) {
+  return Icon(isInCart
+      ? Icons.remove_shopping_cart_outlined
+      : Icons.add_shopping_cart_outlined);
+}
+
 class ProductPane extends StatelessWidget {
   final Product product;
-  final Function(int)? onClick;
-  const ProductPane({Key? key, required this.product, this.onClick})
-      : super(key: key);
+  const ProductPane({Key? key, required this.product}) : super(key: key);
 
   void goToProductPage(BuildContext context) {
     Navigator.of(context)
@@ -33,63 +37,62 @@ class ProductPane extends StatelessWidget {
     );
   }
 
+  bool isItemInCart(BuildContext context, bool listen) =>
+      Provider.of<ShoppingCart>(context, listen: listen)
+          .isItemInCart(product.id);
+
+  void removeItemFromCart(BuildContext context) =>
+      Provider.of<ShoppingCart>(context, listen: false)
+          .removeItemFromCart(product.id);
+
+  void handleClick(BuildContext context) {
+    isItemInCart(context, false)
+        ? removeItemFromCart(context)
+        : addToCartAndShowSnackBar(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isItemInCart =
-        Provider.of<ShoppingCart>(context).isItemInCart(product.id);
-    final removeItemFromCart =
-        Provider.of<ShoppingCart>(context, listen: false).removeItemFromCart;
-
-    return GestureDetector(
-      // onTap: () => removeProductById(product.id),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          child: Flex(
-            direction: Axis.vertical,
-            children: [
-              Image.network(
-                product.imgUrl,
-                height: 50,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  product.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Card(
+        child: InkWell(
+      onTap: () => goToProductPage(context),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () => isItemInCart(context, false)
+                      ? removeItemFromCart(context)
+                      : addToCartAndShowSnackBar(context),
+                  icon: getCartIcon(isItemInCart(context, true)),
+                  visualDensity: VisualDensity.compact,
                 ),
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                children: [
-                  IconButton(
-                    onPressed: isItemInCart
-                        ? () => removeItemFromCart(product.id)
-                        : () => addToCartAndShowSnackBar(context),
-                    icon: Icon(isItemInCart
-                        ? Icons.add_shopping_cart
-                        : Icons.remove_shopping_cart),
-                  ),
-                  IconButton(
-                    color: Colors.red,
-                    onPressed: () => goToProductPage(context),
-                    icon: const Icon(Icons.arrow_forward),
-                  ),
-                ],
-              )
-            ],
-          ),
-          decoration: BoxDecoration(
-            color: Colors.red[50],
-          ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.favorite_outline),
+                  visualDensity: VisualDensity.compact,
+                )
+              ],
+            ),
+            Image.network(
+              product.imgUrl,
+              height: 50,
+              // height: 50,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              product.name,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+          ],
         ),
       ),
-    );
+    ));
   }
 }

@@ -11,8 +11,7 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductCatalog>(context).productList;
-    final resetProducts =
-        Provider.of<ProductCatalog>(context, listen: false).resetProduct;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),
@@ -24,14 +23,6 @@ class ProductsScreen extends StatelessWidget {
         ),
       ),
       drawer: const AppDrawer(),
-      floatingActionButton: Stack(
-        children: [
-          FloatingActionButton(
-            child: const Icon(Icons.ac_unit_rounded),
-            onPressed: resetProducts,
-          ),
-        ],
-      ),
     );
   }
 }
