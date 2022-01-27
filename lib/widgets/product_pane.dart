@@ -5,6 +5,12 @@ import 'package:aigaki_app/provider/shopping_cart.dart';
 import 'package:aigaki_app/screens/cart_screen.dart';
 import 'package:aigaki_app/screens/product_screen.dart';
 
+Icon getCartIcon(bool isInCart) {
+  return Icon(isInCart
+      ? Icons.remove_shopping_cart_outlined
+      : Icons.add_shopping_cart_outlined);
+}
+
 class ProductPane extends StatelessWidget {
   final Product product;
   const ProductPane({Key? key, required this.product}) : super(key: key);
@@ -31,20 +37,25 @@ class ProductPane extends StatelessWidget {
     );
   }
 
-  bool isItemInCart(BuildContext context) =>
-      Provider.of<ShoppingCart>(context).isItemInCart(product.id);
+  bool isItemInCart(BuildContext context, bool listen) =>
+      Provider.of<ShoppingCart>(context, listen: listen)
+          .isItemInCart(product.id);
 
   void removeItemFromCart(BuildContext context) =>
       Provider.of<ShoppingCart>(context, listen: false)
           .removeItemFromCart(product.id);
 
+  void handleClick(BuildContext context) {
+    isItemInCart(context, false)
+        ? removeItemFromCart(context)
+        : addToCartAndShowSnackBar(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
         child: InkWell(
-      onTap: () {
-        print('hello');
-      },
+      onTap: () => goToProductPage(context),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -54,8 +65,10 @@ class ProductPane extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.add_shopping_cart_outlined),
+                  onPressed: () => isItemInCart(context, false)
+                      ? removeItemFromCart(context)
+                      : addToCartAndShowSnackBar(context),
+                  icon: getCartIcon(isItemInCart(context, true)),
                   visualDensity: VisualDensity.compact,
                 ),
                 IconButton(
@@ -70,7 +83,7 @@ class ProductPane extends StatelessWidget {
               height: 50,
               // height: 50,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -81,35 +94,5 @@ class ProductPane extends StatelessWidget {
         ),
       ),
     ));
-
-    Flex(
-      direction: Axis.vertical,
-      children: [
-        Text(
-          product.name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Flex(
-          direction: Axis.horizontal,
-          children: [
-            IconButton(
-              onPressed: isItemInCart(context)
-                  ? () => removeItemFromCart(context)
-                  : () => addToCartAndShowSnackBar(context),
-              icon: Icon(isItemInCart(context)
-                  ? Icons.add_shopping_cart
-                  : Icons.remove_shopping_cart),
-            ),
-            IconButton(
-              color: Colors.red,
-              onPressed: () => goToProductPage(context),
-              icon: const Icon(Icons.arrow_forward),
-            ),
-          ],
-        )
-      ],
-    );
   }
 }
