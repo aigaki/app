@@ -7,9 +7,7 @@ import 'package:aigaki_app/screens/product_screen.dart';
 
 class ProductPane extends StatelessWidget {
   final Product product;
-  final Function(int)? onClick;
-  const ProductPane({Key? key, required this.product, this.onClick})
-      : super(key: key);
+  const ProductPane({Key? key, required this.product}) : super(key: key);
 
   void goToProductPage(BuildContext context) {
     Navigator.of(context)
@@ -33,15 +31,16 @@ class ProductPane extends StatelessWidget {
     );
   }
 
+  bool isItemInCart(BuildContext context) =>
+      Provider.of<ShoppingCart>(context).isItemInCart(product.id);
+
+  void removeItemFromCart(BuildContext context) =>
+      Provider.of<ShoppingCart>(context, listen: false)
+          .removeItemFromCart(product.id);
+
   @override
   Widget build(BuildContext context) {
-    final isItemInCart =
-        Provider.of<ShoppingCart>(context).isItemInCart(product.id);
-    final removeItemFromCart =
-        Provider.of<ShoppingCart>(context, listen: false).removeItemFromCart;
-
     return GestureDetector(
-      // onTap: () => removeProductById(product.id),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Container(
@@ -69,10 +68,10 @@ class ProductPane extends StatelessWidget {
                 direction: Axis.horizontal,
                 children: [
                   IconButton(
-                    onPressed: isItemInCart
-                        ? () => removeItemFromCart(product.id)
+                    onPressed: isItemInCart(context)
+                        ? () => removeItemFromCart(context)
                         : () => addToCartAndShowSnackBar(context),
-                    icon: Icon(isItemInCart
+                    icon: Icon(isItemInCart(context)
                         ? Icons.add_shopping_cart
                         : Icons.remove_shopping_cart),
                   ),
