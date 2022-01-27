@@ -40,55 +40,76 @@ class ProductPane extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          child: Flex(
-            direction: Axis.vertical,
-            children: [
-              Image.network(
-                product.imgUrl,
-                height: 50,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  product.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Card(
+        child: InkWell(
+      onTap: () {
+        print('hello');
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.add_shopping_cart_outlined),
+                  visualDensity: VisualDensity.compact,
                 ),
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                children: [
-                  IconButton(
-                    onPressed: isItemInCart(context)
-                        ? () => removeItemFromCart(context)
-                        : () => addToCartAndShowSnackBar(context),
-                    icon: Icon(isItemInCart(context)
-                        ? Icons.add_shopping_cart
-                        : Icons.remove_shopping_cart),
-                  ),
-                  IconButton(
-                    color: Colors.red,
-                    onPressed: () => goToProductPage(context),
-                    icon: const Icon(Icons.arrow_forward),
-                  ),
-                ],
-              )
-            ],
-          ),
-          decoration: BoxDecoration(
-            color: Colors.red[50],
-          ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.favorite_outline),
+                  visualDensity: VisualDensity.compact,
+                )
+              ],
+            ),
+            Image.network(
+              product.imgUrl,
+              height: 50,
+              // height: 50,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              product.name,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+          ],
         ),
       ),
+    ));
+
+    Flex(
+      direction: Axis.vertical,
+      children: [
+        Text(
+          product.name,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Flex(
+          direction: Axis.horizontal,
+          children: [
+            IconButton(
+              onPressed: isItemInCart(context)
+                  ? () => removeItemFromCart(context)
+                  : () => addToCartAndShowSnackBar(context),
+              icon: Icon(isItemInCart(context)
+                  ? Icons.add_shopping_cart
+                  : Icons.remove_shopping_cart),
+            ),
+            IconButton(
+              color: Colors.red,
+              onPressed: () => goToProductPage(context),
+              icon: const Icon(Icons.arrow_forward),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

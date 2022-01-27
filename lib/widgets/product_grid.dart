@@ -10,8 +10,8 @@ class ProductGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 2,
-      crossAxisSpacing: 16,
-      mainAxisSpacing: 16,
+      crossAxisSpacing: 8,
+      mainAxisSpacing: 8,
       children: [
         ...products.map(
           (product) => ProductPane(product: product),
